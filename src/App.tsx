@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 import { Home } from './pages/Home';
@@ -12,7 +12,7 @@ import { NewsDetail } from './pages/NewsDetail';
 
 function App() {
   return (
-    <Router basename="/NBIC/">
+    <Router>
       <div className="flex flex-col min-h-screen bg-background font-sans text-text">
         <Navbar />
         <main className="flex-grow">
