@@ -12,7 +12,7 @@ import { NewsDetail } from './pages/NewsDetail';
 
 function App() {
   return (
-    <Router>
+    <Router basename="/NBIC/">
       <div className="flex flex-col min-h-screen bg-background font-sans text-text">
         <Navbar />
         <main className="flex-grow">
