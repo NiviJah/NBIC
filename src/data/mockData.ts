@@ -34,7 +34,7 @@ export const events: Event[] = eventsData.map(e => ({
   ...e.attributes,
   slug: e.filename,
   description: e.body
-})).sort((a, b) => a.id - b.id);
+})).sort((a, b) => new Date(a.fullDate).getTime() - new Date(b.fullDate).getTime());
 
 // Load news
 const newsFiles = import.meta.glob('../content/news/*.md', { eager: true, query: '?raw', import: 'default' });
@@ -43,4 +43,4 @@ const newsData = loadContentSync<Omit<NewsItem, 'content'>>(newsFiles as Record<
 export const newsItems: NewsItem[] = newsData.map(n => ({
   ...n.attributes,
   content: n.body
-})).sort((a, b) => a.id - b.id);
+})).sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
