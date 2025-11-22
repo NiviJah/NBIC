@@ -56,7 +56,9 @@ export const EventDetail = () => {
                   Please RSVP to ensure we have an accurate headcount for food and seating. 
                   This event is open to all community members and friends.
                 </p>
-                <Button variant="accent" size="lg">RSVP Now</Button>
+                <a href={`mailto:info@nbic.ca?subject=RSVP for ${event.title}`} className="block">
+                  <Button variant="accent" size="lg" className="w-full md:w-auto">RSVP Now</Button>
+                </a>
               </div>
             </div>
           </div>
@@ -100,8 +102,23 @@ export const EventDetail = () => {
               </div>
 
               <div className="mt-8 pt-6 border-t border-gray-100">
-                <Button variant="primary" className="w-full mb-3">Add to Calendar</Button>
-                <Button variant="outline" className="w-full">Share Event</Button>
+                <Button 
+                  variant="primary" 
+                  className="w-full mb-3"
+                  onClick={() => alert('Calendar integration coming soon!')}
+                >
+                  Add to Calendar
+                </Button>
+                <Button 
+                  variant="outline" 
+                  className="w-full"
+                  onClick={() => {
+                    navigator.clipboard.writeText(window.location.href);
+                    alert('Link copied to clipboard!');
+                  }}
+                >
+                  Share Event
+                </Button>
               </div>
             </div>
           </div>

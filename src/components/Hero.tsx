@@ -1,4 +1,5 @@
 
+import { Link } from 'react-router-dom';
 import { Button } from './ui/Button';
 
 export const Hero = () => {
@@ -20,9 +21,11 @@ export const Hero = () => {
           The central hub for Israelis and friends of Israel across the province.
         </p>
         <div className="mt-10">
-          <Button variant="accent" size="lg">
-            View Upcoming Events
-          </Button>
+          <Link to="/events">
+            <Button variant="accent" size="lg">
+              View Upcoming Events
+            </Button>
+          </Link>
         </div>
       </div>
     </div>
