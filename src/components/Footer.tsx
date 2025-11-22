@@ -1,5 +1,5 @@
 
-import { Facebook, Instagram, Mail, MapPin, Phone } from 'lucide-react';
+import { Facebook, Instagram, Mail } from 'lucide-react';
 import { Button } from './ui/Button';
 
 export const Footer = () => {
@@ -30,17 +30,9 @@ export const Footer = () => {
           <div>
             <h4 className="font-heading font-semibold text-lg mb-4">Contact Us</h4>
             <ul className="space-y-3 text-blue-100">
-              <li className="flex items-start gap-3">
-                <MapPin className="h-5 w-5 shrink-0" />
-                <span>123 Community Way,<br />Fredericton, NB</span>
-              </li>
-              <li className="flex items-center gap-3">
-                <Phone className="h-5 w-5 shrink-0" />
-                <span>(506) 555-0123</span>
-              </li>
               <li className="flex items-center gap-3">
                 <Mail className="h-5 w-5 shrink-0" />
-                <span>info@nbic.ca</span>
+                <a href="mailto:contact@nbisraelicommunity.com" className="hover:text-white transition-colors">contact@nbisraelicommunity.com</a>
               </li>
             </ul>
           </div>
@@ -60,7 +52,7 @@ export const Footer = () => {
               </Button>
             </form>
             <div className="flex gap-4 mt-6">
-              <a href="#" className="text-blue-100 hover:text-white transition-colors"><Facebook className="h-6 w-6" /></a>
+              <a href="https://www.facebook.com/profile.php?id=61578833476897" target="_blank" rel="noopener noreferrer" className="text-blue-100 hover:text-white transition-colors"><Facebook className="h-6 w-6" /></a>
               <a href="#" className="text-blue-100 hover:text-white transition-colors"><Instagram className="h-6 w-6" /></a>
             </div>
           </div>
