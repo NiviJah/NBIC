@@ -1,4 +1,5 @@
 import { loadContentSync } from '../utils/content';
+// Force HMR update
 
 export interface Event {
   id: number;

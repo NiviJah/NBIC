@@ -8,6 +8,7 @@ import { events } from '../data/mockData';
 export const EventDetail = () => {
   const { slug } = useParams<{ slug: string }>();
   const event = events.find(e => e.slug === slug);
+  console.log('Event Description:', event?.description);
 
   if (!event) {
     return (
