@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Calendar as CalendarIcon, List, Filter, MapPin, Clock } from 'lucide-react';
 import { Button } from '../components/ui/Button';
+import { CalendarView } from '../components/CalendarView';
 import { events } from '../data/mockData';
 
 export const Events = () => {
@@ -55,48 +56,52 @@ export const Events = () => {
           ))}
         </div>
 
-        {/* Events List */}
-        <div className="space-y-4">
-          {filteredEvents.map((event) => (
-            <div key={event.id} className="bg-white rounded-lg shadow-sm border border-gray-100 p-6 hover:shadow-md transition-shadow">
-              <div className="flex flex-col md:flex-row gap-6 items-start md:items-center">
-                <div className="flex-shrink-0 bg-blue-50 text-primary rounded-lg p-4 text-center min-w-[100px]">
-                  <span className="block text-sm font-bold uppercase tracking-wider">{event.month}</span>
-                  <span className="block text-3xl font-bold">{event.date}</span>
-                </div>
-                
-                <div className="flex-grow">
-                  <div className="flex items-center gap-2 mb-1">
-                    <span className="text-xs font-bold text-accent uppercase tracking-wide">{event.category}</span>
+        {/* Content */}
+        {view === 'list' ? (
+          <div className="space-y-4">
+            {filteredEvents.map((event) => (
+              <div key={event.id} className="bg-white rounded-lg shadow-sm border border-gray-100 p-6 hover:shadow-md transition-shadow">
+                <div className="flex flex-col md:flex-row gap-6 items-start md:items-center">
+                  <div className="flex-shrink-0 bg-blue-50 text-primary rounded-lg p-4 text-center min-w-[100px]">
+                    <span className="block text-sm font-bold uppercase tracking-wider">{event.month}</span>
+                    <span className="block text-3xl font-bold">{event.date}</span>
                   </div>
-                  <h3 className="text-xl font-heading font-bold text-text mb-2">
-                    <Link to={`/events/${event.id}`} className="hover:text-primary transition-colors">
-                      {event.title}
-                    </Link>
-                  </h3>
-                  <p className="text-gray-600 mb-4 line-clamp-2">{event.description}</p>
                   
-                  <div className="flex flex-wrap gap-4 text-sm text-gray-500">
-                    <div className="flex items-center">
-                      <Clock className="h-4 w-4 mr-1" />
-                      {event.time}
+                  <div className="flex-grow">
+                    <div className="flex items-center gap-2 mb-1">
+                      <span className="text-xs font-bold text-accent uppercase tracking-wide">{event.category}</span>
                     </div>
-                    <div className="flex items-center">
-                      <MapPin className="h-4 w-4 mr-1" />
-                      {event.location}
+                    <h3 className="text-xl font-heading font-bold text-text mb-2">
+                      <Link to={`/events/${event.id}`} className="hover:text-primary transition-colors">
+                        {event.title}
+                      </Link>
+                    </h3>
+                    <p className="text-gray-600 mb-4 line-clamp-2">{event.description}</p>
+                    
+                    <div className="flex flex-wrap gap-4 text-sm text-gray-500">
+                      <div className="flex items-center">
+                        <Clock className="h-4 w-4 mr-1" />
+                        {event.time}
+                      </div>
+                      <div className="flex items-center">
+                        <MapPin className="h-4 w-4 mr-1" />
+                        {event.location}
+                      </div>
                     </div>
                   </div>
-                </div>
 
-                <div className="flex-shrink-0 w-full md:w-auto mt-4 md:mt-0">
-                  <Link to={`/events/${event.id}`}>
-                    <Button variant="accent" className="w-full md:w-auto">RSVP / Details</Button>
-                  </Link>
+                  <div className="flex-shrink-0 w-full md:w-auto mt-4 md:mt-0">
+                    <Link to={`/events/${event.id}`}>
+                      <Button variant="accent" className="w-full md:w-auto">RSVP / Details</Button>
+                    </Link>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        ) : (
+          <CalendarView events={filteredEvents} />
+        )}
       </div>
     </div>
   );
