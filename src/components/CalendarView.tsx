@@ -2,7 +2,7 @@ import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import { useNavigate } from 'react-router-dom';
-import { Event } from '../data/mockData';
+import type { Event } from '../data/mockData';
 
 interface CalendarViewProps {
   events: Event[];
