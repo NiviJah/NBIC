@@ -1,5 +1,7 @@
+
 import { useParams, Link } from 'react-router-dom';
-import { Calendar, MapPin, Clock, ArrowLeft } from 'lucide-react';
+import ReactMarkdown from 'react-markdown';
+import { Calendar, MapPin, Clock, ArrowLeft, Share2 } from 'lucide-react';
 import { Button } from '../components/ui/Button';
 import { events } from '../data/mockData';
 
@@ -46,9 +48,9 @@ export const EventDetail = () => {
           <div className="lg:col-span-2">
             <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-8">
               <h2 className="text-2xl font-heading font-bold text-primary mb-6">About This Event</h2>
-              <p className="text-gray-600 leading-relaxed text-lg mb-8">
-                {event.description}
-              </p>
+                <div className="prose prose-lg max-w-none text-gray-600 mb-8">
+                  <ReactMarkdown>{event.description}</ReactMarkdown>
+                </div>
               
               <div className="bg-blue-50 rounded-lg p-6 border border-blue-100">
                 <h3 className="font-bold text-primary mb-4">Registration Information</h3>

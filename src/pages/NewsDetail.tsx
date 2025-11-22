@@ -1,4 +1,5 @@
 import { useParams, Link } from 'react-router-dom';
+import ReactMarkdown from 'react-markdown';
 import { Calendar, User, ArrowLeft, Share2 } from 'lucide-react';
 import { Button } from '../components/ui/Button';
 import { newsItems } from '../data/mockData';
@@ -53,11 +54,7 @@ export const NewsDetail = () => {
           
           <div className="p-8 md:p-12">
             <div className="prose prose-lg max-w-none text-gray-600">
-              {newsItem.content.split('\n\n').map((paragraph, index) => (
-                <p key={index} className="mb-6 leading-relaxed">
-                  {paragraph}
-                </p>
-              ))}
+              <ReactMarkdown>{newsItem.content}</ReactMarkdown>
             </div>
 
             <div className="mt-12 pt-8 border-t border-gray-100 flex justify-between items-center">
