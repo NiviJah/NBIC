@@ -105,7 +105,18 @@ export const EventDetail = () => {
                 <Button 
                   variant="primary" 
                   className="w-full mb-3"
-                  onClick={() => alert('Calendar integration coming soon!')}
+                  onClick={() => {
+                    const startTime = new Date(`${event.fullDate} ${event.time}`);
+                    const endTime = new Date(startTime.getTime() + 60 * 60 * 1000); // Add 1 hour
+                    
+                    const formatDate = (date: Date) => {
+                      return date.toISOString().replace(/-|:|\.\d\d\d/g, "");
+                    };
+
+                    const googleCalendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(event.title)}&dates=${formatDate(startTime)}/${formatDate(endTime)}&details=${encodeURIComponent(event.description)}&location=${encodeURIComponent(event.location)}`;
+                    
+                    window.open(googleCalendarUrl, '_blank');
+                  }}
                 >
                   Add to Calendar
                 </Button>
