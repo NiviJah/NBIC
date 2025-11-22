@@ -1,7 +1,7 @@
 
 import { useParams, Link } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
-import { Calendar, MapPin, Clock, ArrowLeft, Share2 } from 'lucide-react';
+import { Calendar, MapPin, Clock, ArrowLeft } from 'lucide-react';
 import { Button } from '../components/ui/Button';
 import { events } from '../data/mockData';
 
