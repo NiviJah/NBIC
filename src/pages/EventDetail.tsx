@@ -6,8 +6,8 @@ import { Button } from '../components/ui/Button';
 import { events } from '../data/mockData';
 
 export const EventDetail = () => {
-  const { id } = useParams();
-  const event = events.find(e => e.id === Number(id));
+  const { slug } = useParams<{ slug: string }>();
+  const event = events.find(e => e.slug === slug);
 
   if (!event) {
     return (
@@ -24,14 +24,14 @@ export const EventDetail = () => {
 
   return (
     <div className="min-h-screen bg-background pb-20">
-      {/* Hero Image */}
+      {/* Hero Section */}
       <div className="h-[400px] relative">
         <img 
           src={event.image} 
           alt={event.title} 
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
         <div className="absolute bottom-0 left-0 right-0 p-8 max-w-7xl mx-auto">
           <Link to="/events" className="inline-flex items-center text-white/90 hover:text-white mb-4 transition-colors">
             <ArrowLeft className="h-4 w-4 mr-2" />
@@ -87,7 +87,7 @@ export const EventDetail = () => {
                   </div>
                   <div>
                     <span className="block text-sm text-gray-500 font-medium uppercase">Time</span>
-                    <span className="block text-text font-semibold">{event.time}</span>
+                    <span className="block text-text font-semibold">{event.startTime} - {event.endTime}</span>
                   </div>
                 </div>
 
@@ -108,14 +108,14 @@ export const EventDetail = () => {
                   variant="primary" 
                   className="w-full mb-3"
                   onClick={() => {
-                    const startTime = new Date(`${event.fullDate} ${event.time}`);
-                    const endTime = new Date(startTime.getTime() + 60 * 60 * 1000); // Add 1 hour
+                    const startDateTime = new Date(`${event.fullDate} ${event.startTime}`);
+                    const endDateTime = new Date(`${event.fullDate} ${event.endTime}`);
                     
                     const formatDate = (date: Date) => {
                       return date.toISOString().replace(/-|:|\.\d\d\d/g, "");
                     };
 
-                    const googleCalendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(event.title)}&dates=${formatDate(startTime)}/${formatDate(endTime)}&details=${encodeURIComponent(event.description)}&location=${encodeURIComponent(event.location)}`;
+                    const googleCalendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(event.title)}&dates=${formatDate(startDateTime)}/${formatDate(endDateTime)}&details=${encodeURIComponent(event.description)}&location=${encodeURIComponent(event.location)}`;
                     
                     window.open(googleCalendarUrl, '_blank');
                   }}

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import ReactMarkdown from 'react-markdown';
 import { Calendar as CalendarIcon, List, Filter, MapPin, Clock } from 'lucide-react';
 import { Button } from '../components/ui/Button';
 import { CalendarView } from '../components/CalendarView';
@@ -72,29 +73,31 @@ export const Events = () => {
                       <span className="text-xs font-bold text-accent uppercase tracking-wide">{event.category}</span>
                     </div>
                     <h3 className="text-xl font-heading font-bold text-text mb-2">
-                      <Link to={`/events/${event.id}`} className="hover:text-primary transition-colors">
-                        {event.title}
-                      </Link>
-                    </h3>
-                    <p className="text-gray-600 mb-4 line-clamp-2">{event.description}</p>
-                    
-                    <div className="flex flex-wrap gap-4 text-sm text-gray-500">
-                      <div className="flex items-center">
-                        <Clock className="h-4 w-4 mr-1" />
-                        {event.time}
-                      </div>
-                      <div className="flex items-center">
-                        <MapPin className="h-4 w-4 mr-1" />
-                        {event.location}
-                      </div>
+                    <Link to={`/events/${event.slug}`} className="hover:text-primary transition-colors">
+                      {event.title}
+                    </Link>
+                  </h3>
+                  <div className="prose prose-sm text-gray-600 mb-4 line-clamp-2">
+                    <ReactMarkdown>{event.description}</ReactMarkdown>
+                  </div>
+                  
+                  <div className="flex flex-wrap gap-4 text-sm text-gray-500">
+                    <div className="flex items-center">
+                      <Clock className="h-4 w-4 mr-1" />
+                      {event.startTime} - {event.endTime}
+                    </div>
+                    <div className="flex items-center">
+                      <MapPin className="h-4 w-4 mr-1" />
+                      {event.location}
                     </div>
                   </div>
+                </div>
 
-                  <div className="flex-shrink-0 w-full md:w-auto mt-4 md:mt-0">
-                    <Link to={`/events/${event.id}`}>
-                      <Button variant="accent" className="w-full md:w-auto">RSVP / Details</Button>
-                    </Link>
-                  </div>
+                <div className="flex-shrink-0 w-full md:w-auto mt-4 md:mt-0">
+                  <Link to={`/events/${event.slug}`}>
+                    <Button variant="accent" className="w-full md:w-auto">RSVP / Details</Button>
+                  </Link>
+                </div>
                 </div>
               </div>
             ))}

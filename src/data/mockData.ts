@@ -2,11 +2,13 @@ import { loadContentSync } from '../utils/content';
 
 export interface Event {
   id: number;
+  slug: string;
   title: string;
   date: string;
   month: string;
   fullDate: string;
-  time: string;
+  startTime: string;
+  endTime: string;
   location: string;
   category: string;
   image: string;
@@ -25,10 +27,11 @@ export interface NewsItem {
 
 // Load events
 const eventFiles = import.meta.glob('../content/events/*.md', { eager: true, query: '?raw', import: 'default' });
-const eventsData = loadContentSync<Omit<Event, 'description'>>(eventFiles as Record<string, string>);
+const eventsData = loadContentSync<Omit<Event, 'description' | 'slug'>>(eventFiles as Record<string, string>);
 
 export const events: Event[] = eventsData.map(e => ({
   ...e.attributes,
+  slug: e.filename,
   description: e.body
 })).sort((a, b) => a.id - b.id);
 

@@ -4,7 +4,8 @@ title: Hanukkah Party
 date: 15
 month: DEC
 fullDate: Dec 15, 2025
-time: 5:00 PM
+startTime: 17:00
+endTime: 20:00
 location: Fredericton Convention Centre
 category: Holidays
 image: https://images.unsplash.com/photo-1544246820-d388fd53494f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80

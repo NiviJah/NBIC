@@ -4,7 +4,8 @@ title: Hebrew Storytime & Craft
 date: 07
 month: NOV
 fullDate: Nov 07, 2025
-time: 10:30 AM
+startTime: 10:30
+endTime: 12:00
 location: Moncton Public Library
 category: Family Friendly
 image: https://images.unsplash.com/photo-1503919545889-aef636e10ad4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80

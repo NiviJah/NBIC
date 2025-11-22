@@ -4,7 +4,8 @@ title: Professional Networking Night
 date: 21
 month: NOV
 fullDate: Nov 21, 2025
-time: 7:00 PM
+startTime: 19:00
+endTime: 21:00
 location: Saint John Innovation Centre
 category: Professional
 image: https://images.unsplash.com/photo-1515187029135-18ee286d815b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80

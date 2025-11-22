@@ -23,6 +23,7 @@ export const CalendarView = ({ events }: CalendarViewProps) => {
       date: dateStr,
       // Add custom properties if needed
       extendedProps: {
+        slug: event.slug,
         category: event.category,
         location: event.location
       }
@@ -63,7 +64,7 @@ export const CalendarView = ({ events }: CalendarViewProps) => {
           right: 'dayGridMonth'
         }}
         eventClick={(info) => {
-          navigate(`/events/${info.event.id}`);
+          navigate(`/events/${info.event.extendedProps.slug}`);
         }}
         height="auto"
         contentHeight={600}
